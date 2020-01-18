@@ -1,0 +1,3 @@
+# rofi
+
+The rofi package
