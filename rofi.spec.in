@@ -27,6 +27,7 @@ BuildRequires: pkgconfig(cairo-xcb)
 BuildRequires: pkgconfig(check) >= 0.10.0
 BuildRequires: pkgconfig(glib-2.0)
 BuildRequires: pkgconfig(librsvg-2.0)
+BuildRequires: pkgconfig(libjpeg)
 BuildRequires: pkgconfig(libstartup-notification-1.0)
 BuildRequires: pkgconfig(pango)
 BuildRequires: pkgconfig(pangocairo)
@@ -88,7 +89,7 @@ The %{name}-themes package contains themes for %{name}.
 %build
 autoconf
 %configure
-make %{?_smp_mflags}
+%make_build
 
 make doxy
 find doc/html/html -name "*.map" -delete
