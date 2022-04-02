@@ -1,3 +1,3 @@
-# rofi (Qubes OS R4.0 only)
+# rofi
 
 The rofi package

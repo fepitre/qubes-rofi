@@ -11,10 +11,8 @@ Summary: A window switcher, application launcher and dmenu replacement
 # See also
 # https://lists.fedoraproject.org/archives/list/legal@lists.fedoraproject.org/message/C4VVT54Z4WFGJPPD5X54ILKRF6X2IFLZ/
 License: MIT
-URL:     https://github.com/DaveDavenport/rofi
-Source0: https://github.com/DaveDavenport/rofi/releases/download/%{version}/rofi-%{version}.tar.gz
-
-Patch0: 0001-Allow-older-check-package-version.patch
+URL:     https://github.com/DaveDavenport/%{name}
+Source0: %{URL}/releases/download/%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires: pkgconfig
 BuildRequires: gcc-c++
@@ -22,27 +20,25 @@ BuildRequires: bison
 BuildRequires: doxygen
 BuildRequires: flex
 BuildRequires: graphviz
+BuildRequires: make
 BuildRequires: pkgconfig(cairo)
 BuildRequires: pkgconfig(cairo-xcb)
-BuildRequires: pkgconfig(check) >= 0.10.0
+BuildRequires: pkgconfig(check) >= 0.11.0
 BuildRequires: pkgconfig(glib-2.0)
-BuildRequires: pkgconfig(librsvg-2.0)
-BuildRequires: pkgconfig(libjpeg)
+BuildRequires: pkgconfig(gdk-pixbuf-2.0)
 BuildRequires: pkgconfig(libstartup-notification-1.0)
 BuildRequires: pkgconfig(pango)
 BuildRequires: pkgconfig(pangocairo)
 BuildRequires: pkgconfig(xcb)
 BuildRequires: pkgconfig(xcb-aux)
+BuildRequires: pkgconfig(xcb-cursor)
 BuildRequires: pkgconfig(xcb-ewmh)
 BuildRequires: pkgconfig(xcb-icccm)
 BuildRequires: pkgconfig(xcb-randr)
 BuildRequires: pkgconfig(xcb-xinerama)
 BuildRequires: pkgconfig(xcb-xkb)
-BuildRequires: pkgconfig(xcb-xrm)
 BuildRequires: pkgconfig(xkbcommon)
 BuildRequires: pkgconfig(xkbcommon-x11)
-BuildRequires: autoconf
-BuildRequires: automake
 
 # https://github.com/sardemff7/libgwater
 Provides: bundled(libgwater)
@@ -87,7 +83,6 @@ The %{name}-themes package contains themes for %{name}.
 
 
 %build
-autoconf
 %configure
 %make_build
 
@@ -100,8 +95,8 @@ find doc/html/html -name "*.md5" -delete
 %make_install
 
 
-#%check
-#make check || (cat ./test-suite.log; false)
+%check
+make check || (cat ./test-suite.log; false)
 
 
 %files
